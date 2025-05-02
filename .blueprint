@@ -1,0 +1,11 @@
+created:
+    - database/factories/BookFactory.php
+    - database/factories/AuthorFactory.php
+    - database/migrations/2025_05_02_055117_create_books_table.php
+    - database/migrations/2025_05_02_055118_create_authors_table.php
+    - app/Models/Book.php
+    - app/Models/Author.php
+models:
+    User: {  }
+    Book: { title: string, description: string, year: int, publisher: string, date: date, author_id: id }
+    Author: { name: string, gender: string, relationships: { hasMany: Book } }
