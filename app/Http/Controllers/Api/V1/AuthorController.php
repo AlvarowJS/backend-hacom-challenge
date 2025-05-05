@@ -11,7 +11,7 @@ class AuthorController extends Controller
     public function getAuthorGenderCounts()
     {
         $maleCount = Author::where('gender', 'Masculino')->count();
-        $femaleCount = Author::where('publisher', 'Femenino')->count();
+        $femaleCount = Author::where('gender', 'Femenino')->count();
 
         return response()->json([
             'published' => $maleCount,
