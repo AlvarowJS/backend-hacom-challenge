@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 
 class AuthorController extends Controller
 {
+    public function getAuthorGenderCounts()
+    {
+        $maleCount = Author::where('gender', 'Masculino')->count();
+        $femaleCount = Author::where('publisher', 'Femenino')->count();
+
+        return response()->json([
+            'published' => $maleCount,
+            'unpublished' => $femaleCount
+        ]);
+    }
     /**
      * Display a listing of the resource.
      */

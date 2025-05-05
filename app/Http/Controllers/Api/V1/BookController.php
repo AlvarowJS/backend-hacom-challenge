@@ -9,6 +9,17 @@ use Illuminate\Support\Facades\DB;
 
 class BookController extends Controller
 {
+    public function getPublishedCounts()
+    {
+        $publishedCount = Book::where('publisher', true)->count();
+        $unpublishedCount = Book::where('publisher', false)->count();
+
+        return response()->json([
+            'published' => $publishedCount,
+            'unpublished' => $unpublishedCount
+        ]);
+    }
+
     public function booksPerYear()
     {
         $stats = Book::select('year', DB::raw('count(*) as total'))
@@ -42,7 +53,7 @@ class BookController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'required|string|max:1000',
             'year' => 'required|integer|min:1900|max:' . date('Y'),
-            'publisher' => 'required|boolean',            
+            'publisher' => 'required|boolean',
             'author_id' => 'nullable|exists:authors,id',
         ]);
 

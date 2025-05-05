@@ -22,3 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('books', Book::class);
 Route::apiResource('authors', Author::class);
 Route::get('books-year', [Book::class, 'booksPerYear']);
+Route::get('books-published', [Book::class, 'getPublishedCounts']);
+Route::get('author-gender', [Author::class, 'getAuthorGenderCounts']);
