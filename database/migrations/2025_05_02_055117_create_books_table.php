@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('year');
             $table->boolean('publisher');
-            $table->date('date');
+            $table->date('date')->nullable();
             $table->foreignId('author_id')->constrained('authors')->nullable();
             $table->timestamps();
         });
